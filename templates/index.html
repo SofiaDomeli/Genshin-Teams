@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie seu Time de Genshin Impact</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon.png') }}" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Monte seu Time dos Sonhos - Genshin Impact</h1>
+            <p>Escolha 4 personagens únicos para formar seu time: DPS, Sub DPS (2x) e Suporte!</p>
+        </header>
+
+        <form id="team-form" method="POST">
+            <div class="team-selection">
+                <div class="role">
+                    <label for="dps">DPS:</label>
+                    <div class="custom-select" id="dps">
+                        <div class="option" data-value="" disabled selected>Escolha um personagem</div>
+                        {% for personagem in personagens %}
+                            <div class="option" data-value="{{ personagem }}">
+                                <img src="{{ personagens_imagens[personagem] }}" alt="{{ personagem }}" class="personagem-img">
+                                {{ personagem }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="role">
+                    <label for="subdps1">Sub DPS 1:</label>
+                    <div class="custom-select" id="subdps1">
+                        <div class="option" data-value="" disabled selected>Escolha um personagem</div>
+                        {% for personagem in personagens %}
+                            <div class="option" data-value="{{ personagem }}">
+                                <img src="{{ personagens_imagens[personagem] }}" alt="{{ personagem }}" class="personagem-img">
+                                {{ personagem }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="role">
+                    <label for="subdps2">Sub DPS 2:</label>
+                    <div class="custom-select" id="subdps2">
+                        <div class="option" data-value="" disabled selected>Escolha um personagem</div>
+                        {% for personagem in personagens %}
+                            <div class="option" data-value="{{ personagem }}">
+                                <img src="{{ personagens_imagens[personagem] }}" alt="{{ personagem }}" class="personagem-img">
+                                {{ personagem }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="role">
+                    <label for="support">Support:</label>
+                    <div class="custom-select" id="support">
+                        <div class="option" data-value="" disabled selected>Escolha um personagem</div>
+                        {% for personagem in personagens %}
+                            <div class="option" data-value="{{ personagem }}">
+                                <img src="{{ personagens_imagens[personagem] }}" alt="{{ personagem }}" class="personagem-img">
+                                {{ personagem }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" id="submit-button">Confirmar Time</button>
+        </form>
+
+        <div id="team-display">
+            {% if selected_personagens %}
+                <h2>Seu Time Selecionado:</h2>
+                <ul>
+                    {% for role, personagem in selected_personagens.items() %}
+                        <li><strong>{{ role }}:</strong> {{ personagem }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        // Lógica de interação para personalizar o comportamento da seleção
+        document.querySelectorAll('.custom-select .option').forEach(function(option) {
+            option.addEventListener('click', function() {
+                let select = option.closest('.custom-select');
+                let selectedValue = option.getAttribute('data-value');
+                select.querySelector('.option[selected]').removeAttribute('selected');
+                option.setAttribute('selected', 'true');
+                select.querySelector('.option:first-child').textContent = option.textContent;
+                select.querySelector('.option:first-child').setAttribute('data-value', selectedValue);
+            });
+        });
+    </script>
+</body>
+</html>

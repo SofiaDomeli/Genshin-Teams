@@ -1,0 +1,130 @@
+/* Resetando alguns estilos padrões */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Imagem de fundo fixa */
+body {
+    background-image: url(https://wallpapercave.com/wp/wp10519849.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: top;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+/* Container para centralizar conteúdo */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+/* Estilo para o cabeçalho */
+header h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* Estilização para os campos de seleção de personagem */
+.team-selection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.role {
+    width: 22%;
+    margin-bottom: 20px;
+}
+
+.role label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.custom-select {
+    display: inline-block;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: relative;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.custom-select .option {
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #333;
+}
+
+.custom-select .option img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.custom-select .option[selected] {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+/* Quando a opção é selecionada */
+.custom-select .option:first-child {
+    color: #888;
+    background-color: #f8f8f8;
+}
+
+/* Efeito de hover nas opções */
+.custom-select .option:hover {
+    background-color: #f0f0f0;
+}
+
+/* Estilo do botão de submissão */
+#submit-button {
+    display: block;
+    width: 200px;
+    margin: 40px auto;
+    padding: 10px;
+    background-color: #f39c12;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#submit-button:hover {
+    background-color: #e67e22;
+}
+
+/* Estilo para exibir o time selecionado */
+#team-display {
+    margin-top: 40px;
+    text-align: center;
+}
+
+#team-display ul {
+    list-style-type: none;
+}
+
+#team-display li {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
