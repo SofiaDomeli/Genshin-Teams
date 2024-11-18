@@ -9,7 +9,8 @@ document.querySelectorAll('.custom-select .option').forEach(function(option) {
             select.querySelector('.option:first-child').textContent = `Selecione seu ${select.id}`; 
             select.querySelector('.option:first-child').removeAttribute('data-value');
             select.querySelector('.option:first-child').classList.remove('selected');
-        } else {
+        } 
+        else {
             if (currentSelectedOption) {
                 currentSelectedOption.removeAttribute('selected');
                 currentSelectedOption.classList.remove('selected');
@@ -33,6 +34,13 @@ document.getElementById('team-form').addEventListener('submit', function(event) 
     });
     if (Object.keys(selectedTeam).length > 0) {
         console.log('Time Selecionado:', selectedTeam);
+        fetch('/submit-form', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'  // This tells Flask that the body is in JSON format
+            },
+            body: JSON.stringify(selectedTeam),  // Sending the selected team as JSON
+        });
     }
 });
 
